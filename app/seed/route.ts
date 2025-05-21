@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+// import bcrypt from 'bcryptjs'; //aslinya bcrypt saja, cocok untuk VPS
 import postgres from 'postgres';
 import { invoices, customers, revenue, users } from '../lib/placeholder-data';
 
@@ -121,7 +122,7 @@ export async function GET() {
   }
 }
 
-
+// Ini untuk VPS aslinya bcript
 // export async function GET() {
 //   try {
 //     const result = await sql.begin((sql) => [
