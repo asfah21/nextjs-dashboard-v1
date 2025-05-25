@@ -1,32 +1,32 @@
-// import { NextResponse } from 'next/server';
-// import postgres from 'postgres';
+import { NextResponse } from 'next/server';
+import postgres from 'postgres';
 
-// const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
-// // const sql = postgres(process.env.DATABASE_URL!, { ssl: 'verify-full'});
+// const sql = postgres(process.env.DATABASE_URL!, { ssl: 'verify-full'});
 
-// async function listInvoices() {
-// 	const data = await sql`
-//     SELECT invoices.amount, customers.name
-//     FROM invoices
-//     JOIN customers ON invoices.customer_id = customers.id
-//     WHERE invoices.amount = 666;
-//   `;
+async function listInvoices() {
+	const data = await sql`
+    SELECT invoices.amount, customers.name
+    FROM invoices
+    JOIN customers ON invoices.customer_id = customers.id
+    WHERE invoices.amount = 666;
+  `;
 
-// 	return data;
-// }
+	return data;
+}
 
-// export async function GET() {
-//   // return Response.json({
-//   //   message:
-//   //     'Uncomment this file and remove this line. You can delete this file when you are finished.',
-//   // });
-//   try {
-//   	return NextResponse.json(await listInvoices());
-//   } catch (error) {
-//   	return NextResponse.json({ error }, { status: 500 });
-//   }
-// }
+export async function GET() {
+  // return Response.json({
+  //   message:
+  //     'Uncomment this file and remove this line. You can delete this file when you are finished.',
+  // });
+  try {
+  	return NextResponse.json(await listInvoices());
+  } catch (error) {
+  	return NextResponse.json({ error }, { status: 500 });
+  }
+}
 
 
 // import { NextResponse } from 'next/server';
@@ -77,33 +77,3 @@
 //     return NextResponse.json({ error: error instanceof Error ? error.message : "Unknown error" }, { status: 500 });
 //   }
 // }
-
-import { NextResponse } from 'next/server';
-import postgres from 'postgres';
-
-const sql = postgres(process.env.DATABASE_URL!, {
-  ssl: process.env.NODE_ENV === 'development' 
-    ? { rejectUnauthorized: false }
-    : 'require'
-});
-
-async function listInvoices() {
-  const data = await sql`SELECT invoices.amount, customers.name 
-  FROM invoices
-  JOIN customers ON invoices.customer_id = customers.id
-  WHERE invoices.amount = 666;`;
-  return data;
-}
-
-export async function GET() {
-  try {
-    const data = await listInvoices();
-    return NextResponse.json(data);
-  } catch (error) {
-    console.error('Database error:', error);
-    return NextResponse.json(
-      { error: "Gagal terhubung ke database" },
-      { status: 500 }
-    );
-  }
-}
