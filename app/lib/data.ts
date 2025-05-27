@@ -10,11 +10,7 @@ import {
 import { formatCurrency } from './utils';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
-
-// const sql = postgres(process.env.POSTGRES_URL!, {
-//   ssl: process.env.NODE_ENV === 'production' ? 'require' : false
-// });
-
+//
 export async function fetchRevenue() {
   try {
     // Artificially delay a response for demo purposes.
@@ -25,7 +21,7 @@ export async function fetchRevenue() {
 
     const data = await sql<Revenue[]>`SELECT * FROM revenue`;
 
-    // console.log('Data fetch completed after 3 seconds.');
+    // console.log('Data fetch completed ;)');
 
     return data;
   } catch (error) {
