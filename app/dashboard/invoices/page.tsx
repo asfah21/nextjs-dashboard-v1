@@ -2,7 +2,7 @@ import Pagination from '@/app/ui/invoices/pagination'; // import komponen Pagina
 import Search from '@/app/ui/search'; // import komponen Search untuk mencari invoice
 import Table from '@/app/ui/invoices/table'; // import komponen Table untuk menampilkan daftar invoice
 import { CreateInvoice } from '@/app/ui/invoices/buttons'; // import tombol CreateInvoice
-import { lusitana } from '@/app/ui/fonts'; // import font lusitana yang digunakan untuk heading
+import { inter } from '@/app/ui/fonts'; // import font lusitana yang digunakan untuk heading
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons'; // import skeleton loader untuk tampilan saat loading data
 import { Suspense } from 'react'; // import Suspense untuk handling komponen async secara efisien
 import { fetchInvoicesPages } from '@/app/lib/data'; // import fungsi untuk menghitung total halaman berdasarkan query pencarian
@@ -35,7 +35,7 @@ export default async function Page(
     <div className="w-full">
       {/* Header judul halaman */}
       <div className="flex w-full items-center justify-between">
-        <h1 className={`${lusitana.className} text-2xl`}>Invoices</h1>
+        <h1 className={`${inter.className} text-2xl`}>Invoices</h1>
       </div>
 
       {/* Area pencarian dan tombol tambah invoice */}

@@ -1,4 +1,4 @@
-import { Roboto, Inter, Lusitana } from 'next/font/google';
+import { Roboto, Inter } from 'next/font/google';
  
 export const roboto = Roboto({ 
   subsets: ['latin'],
@@ -8,5 +8,3 @@ export const roboto = Roboto({
 export const inter = Inter({ // Mengubah nama variabel dan font menjadi Inter
   subsets: ['latin'],
 });
-
-export const lusitana = Lusitana({ weight: ['400', '700'], subsets: ['latin'] });
